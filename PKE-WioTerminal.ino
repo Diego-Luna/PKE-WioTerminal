@@ -29,11 +29,11 @@ int PonteModo = A5;
 int max_size_dos;
 int valuePtDos;
 
-int valueMode = 0;
+byte valueMode = 0;
 int valuePuro;
 
 int button = D7;
-int valueButton;
+byte valueButton;
 bool onDisplay = false;
 
 // -> raspi
@@ -49,7 +49,7 @@ char *s;
 Servo myservo;  // create servo object to control a servo
 
 bool fantasmaDetectado = false;
-int seccionLed = 0;
+byte seccionLed = 0;
 
 void setup() {
 
@@ -91,7 +91,7 @@ void loop() {
 
     myservo.write(90);
 
-    //  tomarValoresPotenciometros();
+    tomarValoresPotenciometros();
 
     // -> modeo onda
     if (valueMode == 1) {
@@ -112,16 +112,12 @@ void loop() {
 
         //las siguientes dos lineas deben ser modificadas de acuerdo al graficador que utilicen o si quieren sacar por PWM o un DAC
 
-        //  Serial.print(int(sin(angulo) * 128 + 127));           // calculamos el seno y lo mapeamos a un valor de 0 a 255
-        //  Serial.print(" 128\n");                               // imprimo una constante de referencia en 128(osea el cruce por cero)
-
         spr.fillSprite(TFT_WHITE);
         if (data.size() >= max_size_dos) { // == max_size
           data.pop();//this is used to remove the first read variable
         }
 
-        data.push(int( (valuePtDos * 0.5) *  (sin(angulo) * 128 + 127))); //read variables and store in data
-        //data.push(int( sin(angulo) * 128 + 127)); //read variables and store in data
+        data.push(int( (valuePtDos * 0.5) *  (sin(angulo) * 64 + 62 ))); //read variables and store in data
 
         tomarValoresPotenciometros();
 
@@ -143,7 +139,7 @@ void loop() {
 
         angulo += deltaAngulo;                                // incrementamos el angulo en un delta correspondiente a un paso
 
-        if (onDisplay == false || valueMode != 1 ) {
+        if (onDisplay == false || valueMode == 2 ) {
           break;
           data = {};
         }
@@ -222,6 +218,10 @@ void loop() {
       delay(400);
     }
 
+    if (valueMode == 0) {
+      Serial.println("-> valueMode is 0");
+    }
+
   } else {
 
     OnButton();
@@ -281,15 +281,12 @@ void tomarValoresPotenciometros() {
 
   Serial.print("--> valueMode ");
   Serial.println(valueMode);
-
 }
 
 void pantallaEstiloGiroscopio() {
   /*
            estructura de basica del PKE onda
   */
-
-
 
   spr.drawFastVLine(tft.width() / 2, 0, tft.height(), TFT_BLACK); //Verical line
   spr.drawFastHLine(tft.width() / 2 - 30, 10, 60, TFT_BLACK);
