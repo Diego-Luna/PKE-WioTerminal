@@ -1,5 +1,5 @@
 #include "TFT_eSPI.h" //TFT LCD library
-#include <ServoAlternative.h>
+// #include <ServoAlternative.h>
 
 //  -> onda sinusoidal
 #include"seeed_line_chart.h" //include the library
@@ -50,7 +50,7 @@ char *s;
 
 // <- raspi
 
-Servo myservo;  // create servo object to control a servo
+// Servo myservo;  // create servo object to control a servo
 
 bool fantasmaDetectado = false;
 byte seccionLed = 0;
@@ -66,8 +66,8 @@ void setup() {
   pinMode(PonteDos, INPUT);
   pinMode(PonteModo, INPUT);
   pinMode(button, INPUT);
-  myservo.attach(D2);  // attaches the servo on pin 9 to the servo object
-  myservo.write(0);
+  // myservo.attach(D2);  // attaches the servo on pin 9 to the servo object
+  // myservo.write(0);
 
   // -> pantalla de la Wio terminal
 
@@ -93,7 +93,7 @@ void loop() {
 
   if (onDisplay == true) {
 
-    myservo.write(90);
+    // myservo.write(90);
 
     tomarValoresPotenciometros();
 
@@ -249,7 +249,7 @@ void loop() {
 
     tft.fillScreen(TFT_BLACK);
 
-    myservo.write(0);
+    // myservo.write(0);
 
   }
 
