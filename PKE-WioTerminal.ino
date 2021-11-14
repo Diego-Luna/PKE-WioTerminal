@@ -41,6 +41,10 @@ bool onDisplay = false;
 // Campos contiene la cadena formateada, con separador ",".
 String campos = "197:167:46:50";
 
+unsigned long myTime;
+unsigned long oldMyTime;
+bool ledStatus = false;
+
 // s en un puntero auxiar necesario.
 char *s;
 
@@ -69,6 +73,7 @@ void setup() {
 
   tft.begin(); //Start TFT LCD
   tft.setRotation(3); //Set TFT LCD rotation
+  spr.createSprite(TFT_HEIGHT, TFT_WIDTH);
 
   tft.setFreeFont(&FreeSansBold24pt7b);
   tft.fillScreen(TFT_RED); //Red background
@@ -78,7 +83,6 @@ void setup() {
 
   delay(3000);
 
-  spr.createSprite(TFT_HEIGHT, TFT_WIDTH); //Create buffer
   tft.fillScreen(TFT_RED);
   tft.fillScreen(TFT_BLACK);
 }
@@ -95,6 +99,9 @@ void loop() {
 
     // -> modeo onda
     if (valueMode == 1) {
+
+      digitalWrite(ledLeft, 0);
+      digitalWrite(ledRight, 0);
 
       spr.fillScreen(TFT_WHITE);
 
@@ -140,8 +147,9 @@ void loop() {
         angulo += deltaAngulo;                                // incrementamos el angulo en un delta correspondiente a un paso
 
         if (onDisplay == false || valueMode == 2 ) {
-          break;
           data = {};
+          break;
+
         }
 
       }
@@ -149,7 +157,15 @@ void loop() {
 
     // modo localisador de fantasmas
     if (valueMode == 2) {
+
       spr.fillScreen(TFT_WHITE);
+      spr.fillRect(75, 0, 250, 250, TFT_WHITE);
+
+
+      //      spr.pushSprite(0, 0);
+
+
+      OnButton();
 
       if (Serial.available()) { //Si está disponible
         String myString  = Serial.readString();
@@ -208,15 +224,20 @@ void loop() {
         delay(1000);
       }
 
-      digitalWrite(ledLeft, 150);
-      digitalWrite(ledRight, 150);
+      ajusteTiempo();
 
-      delay(400);
+      if (ledStatus == true) {
+        digitalWrite(ledLeft, 150);
+        digitalWrite(ledRight, 150);
+      } else {
+        digitalWrite(ledLeft, 0);
+        digitalWrite(ledRight, 0);
+      }
 
-      digitalWrite(ledLeft, 0);
-      digitalWrite(ledRight, 0);
-      delay(400);
+
+
     }
+
 
     if (valueMode == 0) {
       Serial.println("-> valueMode is 0");
@@ -281,6 +302,24 @@ void tomarValoresPotenciometros() {
 
   Serial.print("--> valueMode ");
   Serial.println(valueMode);
+}
+
+void ajusteTiempo() {
+
+  myTime = millis();
+
+  long diferencia = myTime - oldMyTime;
+
+  Serial.print("--> diferencia: ");
+  Serial.println(diferencia);
+  Serial.print("--> ledStatus :" );
+  Serial.println(ledStatus);
+
+  if (diferencia >= 400 ) {
+    oldMyTime = myTime;
+    ledStatus = !ledStatus;
+  }
+
 }
 
 void pantallaEstiloGiroscopio() {
