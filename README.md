@@ -13,7 +13,7 @@ Va a cer la pantalla de nuestro PKE meter, adonde con un potenciometro podremos 
 
 2. Agregue la biblioteca de tableros de terminales de Wio:
 
-- Abre el IDE de Arduino, haga clic en **Archivo > Preferencias** y pega la siguiente URL a las URL del Administrador de tableros adicionales:
+   - Abre el IDE de Arduino, haga clic en **Archivo > Preferencias** y pega la siguiente URL a las URL del Administrador de tableros adicionales:
 
 ```
 https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
@@ -31,13 +31,13 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 
 4. Selecciona tu placa y puerto
 
-- Deberá seleccionar la entrada en el menú **Herramientas > Tablero** que corresponda a su Arduino. Seleccionando la Wio Terminal.
+   - Deberá seleccionar la entrada en el menú **Herramientas > Tablero** que corresponda a su Arduino. Seleccionando la Wio Terminal.
 
 <p align="center">
   <img src="imgs/img_3.png" width="600">
 </p>
 
-- Selecciona el dispositivo serie de la placa de terminales Wio en el menú **Herramientas > Puerto**.
+  * Selecciona el dispositivo serie de la placa de terminales Wio en el menú **Herramientas > Puerto**.
 
 <p align="center">
   <img src="imgs/img_4.png" width="600">
@@ -45,7 +45,7 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 
 4. Descargar librerias:
 
-- Navegue hasta el **boceto -> Incluir biblioteca -> Biblioteca del administrador**, y aparecerá una ventana del administrador de la biblioteca.
+   - Navegue hasta el **boceto -> Incluir biblioteca -> Biblioteca del administrador**, y aparecerá una ventana del administrador de la biblioteca.
 
 - Busque Adafruit Zero DMA y haga clic en Instalar.
 
@@ -53,11 +53,11 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
   <img src="imgs/img_5.png" width="600">
 </p>
 
-- Descarga en formato zip las siguientes librerias:
-  - [Seeed_Arduino_Linechart](https://github.com/Seeed-Studio/Seeed_Arduino_Linechart): https://github.com/Seeed-Studio/Seeed_Arduino_Linechart
-  - [Seeed_Arduino_LCD](https://github.com/Seeed-Studio/Seeed_Arduino_LCD): https://github.com/Seeed-Studio/Seeed_Arduino_LCD
+    - Descarga en formato zip las siguientes librerias:
+      - [Seeed_Arduino_Linechart](https://github.com/Seeed-Studio/Seeed_Arduino_Linechart): https://github.com/Seeed-Studio/Seeed_Arduino_Linechart
+      - [Seeed_Arduino_LCD](https://github.com/Seeed-Studio/Seeed_Arduino_LCD): https://github.com/Seeed-Studio/Seeed_Arduino_LCD
 
-* Abra el Arduino IDE y haga clic en **bosquejo -> Incluir biblioteca -> Agregar biblioteca .ZIP**, y elige los zips de las librerias que acaba de descargar.
+    - Abra el Arduino IDE y haga clic en **bosquejo -> Incluir biblioteca -> Agregar biblioteca .ZIP**, y elige los zips de las librerias que acaba de descargar.
 
 <p align="center">
   <img src="imgs/img_6.png" width="600">
@@ -79,7 +79,7 @@ ssh pi@192.168.1.19
 
 2. Instalación de dependencias
 
-- To set this device up in Edge Impulse, run the following commands:
+   - To set this device up in Edge Impulse, run the following commands:
 
 ```
 curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
@@ -126,8 +126,8 @@ edge-impulse-linux-runner --download modelfile.eim
 
 8. Corremos el modelo de AI:
 
-- Conectamos la Wio Terminal a cualquier puerto de la Raspberry Pi.
-- Y ejecutamos el comando:
+   - Conectamos la Wio Terminal a cualquier puerto de la Raspberry Pi.
+   - Y ejecutamos el comando:
 
 ```
 python3 classify-full-frame.py ./modelfile.eim 0
