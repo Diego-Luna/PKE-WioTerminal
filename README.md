@@ -53,9 +53,9 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
   <img src="imgs/img_5.png" width="600">
 </p>
 
-    - Descarga en formato zip las siguientes librerias:
-      - [Seeed_Arduino_Linechart](https://github.com/Seeed-Studio/Seeed_Arduino_Linechart): https://github.com/Seeed-Studio/Seeed_Arduino_Linechart
-      - [Seeed_Arduino_LCD](https://github.com/Seeed-Studio/Seeed_Arduino_LCD): https://github.com/Seeed-Studio/Seeed_Arduino_LCD
+  - Descarga en formato zip las siguientes librerias:
+    - [Seeed_Arduino_Linechart](https://github.com/Seeed-Studio/Seeed_Arduino_Linechart): https://github.com/Seeed-Studio/Seeed_Arduino_Linechart
+    - [Seeed_Arduino_LCD](https://github.com/Seeed-Studio/Seeed_Arduino_LCD): https://github.com/Seeed-Studio/Seeed_Arduino_LCD
 
     - Abra el Arduino IDE y haga clic en **bosquejo -> Incluir biblioteca -> Agregar biblioteca .ZIP**, y elige los zips de las librerias que acaba de descargar.
 
