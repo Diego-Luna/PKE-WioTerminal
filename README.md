@@ -45,14 +45,24 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 
 4. Descargar librerias:
 
-* Navegue hasta el **boceto -> Incluir biblioteca -> Biblioteca del administrador**, y aparecerá una ventana del administrador de la biblioteca.
+- Navegue hasta el **boceto -> Incluir biblioteca -> Biblioteca del administrador**, y aparecerá una ventana del administrador de la biblioteca.
 
-* Busque Adafruit Zero DMA y haga clic en Instalar.
+- Busque Adafruit Zero DMA y haga clic en Instalar.
 
 <p align="center">
   <img src="imgs/img_5.png" width="600">
 </p>
 
+- Descarga en formato zip las siguientes librerias:
+  - [Seeed_Arduino_Linechart](https://github.com/Seeed-Studio/Seeed_Arduino_Linechart): https://github.com/Seeed-Studio/Seeed_Arduino_Linechart
+  - [Seeed_Arduino_LCD](https://github.com/Seeed-Studio/Seeed_Arduino_LCD): https://github.com/Seeed-Studio/Seeed_Arduino_LCD
 
+* Abra el Arduino IDE y haga clic en **bosquejo -> Incluir biblioteca -> Agregar biblioteca .ZIP**, y elige los zips de las librerias que acaba de descargar.
+
+<p align="center">
+  <img src="imgs/img_6.png" width="600">
+</p>
+
+5. Abre el archivo **PKE-WioTerminal.ino** y sube lo a la Wio Terminal
 
 ## Raspberry pi
