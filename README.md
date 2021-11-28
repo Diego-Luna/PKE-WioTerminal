@@ -66,3 +66,69 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 5. Abre el archivo **PKE-WioTerminal.ino** y sube lo a la Wio Terminal
 
 ## Raspberry pi
+
+Vamos a correr el modelo de inteligencia arificial, que crearemos en [Edge Impulse](https://www.edgeimpulse.com/) y mandaremos la informacion a nuestra Wio Terminal de la ubicacion del fantasma.
+
+### Pasos:
+
+1. Nos conectamos por ssh:
+
+```
+ssh pi@192.168.1.19
+```
+
+2. Instalación de dependencias
+
+- To set this device up in Edge Impulse, run the following commands:
+
+```
+curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+sudo apt install -y gcc g++ make build-essential nodejs sox gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-base-apps
+npm config set user root && sudo npm install edge-impulse-linux -g --unsafe-perm
+```
+
+3. Si tiene un módulo de cámara Raspberry Pi, también debe activarlo primero. Ejecute el siguiente comando:
+
+```
+sudo raspi-config
+```
+
+4. Connecting to Edge Impulse
+
+```
+edge-impulse-linux
+```
+
+5. Instalación del SDK de Python para Linux
+
+```
+sudo apt-get install libatlas-base-dev libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
+pip3 install edge_impulse_linux -i https://pypi.python.org/simple
+```
+
+6. Descargamos el repositorio en nuestra Raspberry Pi:
+
+```
+git clone https://github.com/Diego-Luna/PKE-WioTerminal.git
+```
+
+- entramos en la carpeta
+
+```
+cd PKE-WioTerminal/raspberry-pi/
+```
+
+7. Descargamos el modelo de Inteligensia artificial en nuestra Raspberry Pi:
+
+```
+edge-impulse-linux-runner --download modelfile.eim
+```
+
+8. Corremos el modelo de AI:
+
+- Conectamos la Wio Terminal a cualquier puerto de la Raspberry Pi.
+- Y ejecutamos el comando:
+
+```
+python3 classify-full-frame.py ./modelfile.eim 0
+```
