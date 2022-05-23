@@ -65,6 +65,9 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 
 5. Abre el archivo **PKE-WioTerminal.ino** y sube lo a la Wio Terminal
 
+## Edge Impulse
+[Project AI:](https://studio.edgeimpulse.com/public/51259/latest)
+
 ## Raspberry pi
 
 Vamos a correr el modelo de inteligencia arificial, que crearemos en [Edge Impulse](https://www.edgeimpulse.com/) y mandaremos la informacion a nuestra Wio Terminal de la ubicacion del fantasma.
